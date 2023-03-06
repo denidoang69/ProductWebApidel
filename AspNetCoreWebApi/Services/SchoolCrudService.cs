@@ -94,7 +94,7 @@ namespace AspNetCoreWebApi.Services
             return "";
         }
 
-        public async Task<bool> DeleteAsync(int schoolId, UpdateSchoolFormModel existingSchool)
+        public async Task<bool> DeleteAsync(int schoolId, DeleteSchoolFormModel existingSchool)
         {
             var school = await _db.Schools
                 .Where(Q => Q.SchoolId == schoolId)

@@ -41,6 +41,7 @@ namespace AspNetCoreWebApi.Controllers
             return Ok(newId);
         }
 
+
         [HttpPut("{schoolId}")]
         public async Task<ActionResult> Update(int schoolId, [FromBody] UpdateSchoolFormModel existingSchool)
         {
@@ -57,6 +58,19 @@ namespace AspNetCoreWebApi.Controllers
                 return ValidationProblem(ModelState);
             }
             return Ok("success update data");
+        }
+
+        [HttpDelete("{schoolId}")]
+        public async Task<ActionResult> Delete(int schoolId, [FromBody] DeleteSchoolFormModel existingSchool)
+        {
+            if (!ModelState.IsValid)
+            {
+                return ValidationProblem(ModelState);
+            }
+
+            var delId = await _schoolCrudService.DeleteAsync(schoolId, existingSchool);
+
+            return Ok(delId);
         }
 
         [Obsolete("Raw query version.")]
