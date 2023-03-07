@@ -22,7 +22,7 @@ builder.Services.AddTransient<SchoolCrudService>();
 // Set as singleton to provide static data.
 builder.Services.AddSingleton<ProductData>();
 
-builder.Services.AddDbContext<TurboBootcampDbContext>(options =>
+builder.Services.AddDbContext<turbo_bootcampDbContext>(options =>
     // Use Configuration.GetConnectionString to obtain the setting value in appsettings.
     options.UseNpgsql(builder.Configuration.GetConnectionString("Sql")));
 

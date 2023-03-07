@@ -5,9 +5,9 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace AspNetCoreWebApi.Sql.Entities
 {
-    public partial class TurboBootcampDbContext : DbContext
+    public partial class turbo_bootcampDbContext : DbContext
     {
-        public TurboBootcampDbContext(DbContextOptions<TurboBootcampDbContext> options)
+        public turbo_bootcampDbContext(DbContextOptions<turbo_bootcampDbContext> options)
             : base(options)
         {
         }

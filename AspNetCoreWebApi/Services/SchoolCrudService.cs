@@ -9,9 +9,9 @@ namespace AspNetCoreWebApi.Services
     /// </summary>
     public class SchoolCrudService
     {
-        private readonly TurboBootcampDbContext _db;
+        private readonly turbo_bootcampDbContext _db;
 
-        public SchoolCrudService(TurboBootcampDbContext db)
+        public SchoolCrudService(turbo_bootcampDbContext db)
         {
             _db = db;
         }
@@ -94,7 +94,7 @@ namespace AspNetCoreWebApi.Services
             return "";
         }
 
-        public async Task<bool> DeleteAsync(int schoolId, DeleteSchoolFormModel existingSchool)
+        public async Task<bool> DeleteAsync(int schoolId)
         {
             var school = await _db.Schools
                 .Where(Q => Q.SchoolId == schoolId)
@@ -104,6 +104,7 @@ namespace AspNetCoreWebApi.Services
                 return false;
             }
             _db.Schools.Remove(school);
+            await _db.SaveChangesAsync();
 
             return true;
         }
