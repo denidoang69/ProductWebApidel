@@ -61,14 +61,14 @@ namespace AspNetCoreWebApi.Controllers
         }
 
         [HttpDelete("{schoolId}")]
-        public async Task<ActionResult> Delete(int schoolId, [FromBody] DeleteSchoolFormModel existingSchool)
+        public async Task<ActionResult> Delete(int schoolId)
         {
             if (!ModelState.IsValid)
             {
                 return ValidationProblem(ModelState);
             }
 
-            var delId = await _schoolCrudService.DeleteAsync(schoolId, existingSchool);
+            var delId = await _schoolCrudService.DeleteAsync(schoolId);
 
             return Ok(delId);
         }
